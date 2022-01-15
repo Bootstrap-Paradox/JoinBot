@@ -33,6 +33,7 @@ class Bot:
         # self.turn_off_mic_cam()
         self.join_now()
         # self.ask_to_join()
+        self.find_classroom()
 
     def turn_off_mic_cam(self):
 
@@ -68,6 +69,15 @@ class Bot:
         self.driver.find_element_by_css_selector(
             'div.uArJ5e.UQuaGc.Y5sE8d.uyXBBb.xKiqt').click()
 
+    def find_classroom(self,):
+        time.sleep(10)
+        self.driver.get("https://classroom.google.com/h")
+
+        self.driver.implicitly_wait(2000)
+
+        self.driver.find_element_by_xpath(
+            "//a[contains(string(), 'SY BCA 2021-22')]").click()
+
     def google_login(self, email, password):
 
         # Username Field
@@ -94,4 +104,5 @@ if __name__ == "__main__":
 
     bot = Bot(email='appl11217@sanjayghodawatuniversity.ac.in',
               password=environ.get("UNI_EMAIL_PASS"))
-    bot.join_meeting(meeting_link="https://meet.google.com/wwn-vpwo-jvc")
+    bot.join_meeting(
+        meeting_link="https://meet.google.com/jaa-ekme-xho?authuser=0")
